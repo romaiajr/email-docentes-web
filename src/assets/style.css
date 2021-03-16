@@ -1,0 +1,101 @@
+:root {
+  --primary-light-color: #fffd6d;
+  --primary-color: #fffd44;
+  --primary-dark-color: #f6f312;
+
+  --secondary-light-color: #4477ad;
+  --secondary-color: #29639f;
+  --secondary-dark-color: #124d8a;
+
+  --dark-light-color: #464545;
+  --dark-color: #100f0f;
+
+  --light-color: #fafafa;
+
+  --danger-color: #ef2222;
+  --success-color: #57d74c;
+
+  font-family: "Open Sans", sans-serif;
+  font-family: "Poppins", sans-serif;
+}
+html {
+  height: 100%;
+  scroll-behavior: smooth;
+}
+body {
+  height: 100%;
+  margin: 0;
+  /* padding-top: 92px; */
+  font-family: -apple-system, BlinkMacSystemFont, "IBM Plex Sans",
+    "IBM Plex serif", "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell",
+    "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-display: swap;
+}
+h2 {
+  margin: 0;
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 67px;
+  line-height: 110%;
+}
+
+h3 {
+  margin: 0;
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 50px;
+  line-height: 110%;
+}
+
+h4 {
+  margin: 0;
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 37px;
+  line-height: 120%;
+}
+
+h5 {
+  margin: 0;
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 28px;
+  line-height: 120%;
+}
+
+h6 {
+  margin: 0;
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 21px;
+  line-height: 120%;
+}
+
+p {
+  margin: 0;
+  font-family: Open Sans;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 150%;
+}
+
+small {
+  font-family: Open Sans;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 150%;
+}
+/* @media screen and (max-width: 600px) {
+  body {
+    padding-top: 66px;
+  }
+} */
