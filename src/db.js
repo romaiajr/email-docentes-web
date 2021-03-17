@@ -1,9 +1,9 @@
-import firebase from 'firebase/app'
-import 'firebase/firestore'
+import firebase from "firebase/app";
+import "firebase/firestore";
 firebase.initializeApp({
-  projectId: 'emailsdocentesuefs',
-  databaseURL: 'emailsdocentesuefs.firebaseapp.com'
-})
-export const db = firebase.firestore()
+  projectId: process.env.PROJECT_ID,
+  databaseURL: process.env.DATABASE_URL,
+});
+export const db = firebase.firestore();
 
-db.settings({ timestampsInSnapshots: true })
+db.settings({ timestampsInSnapshots: true });
