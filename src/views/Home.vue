@@ -3,7 +3,7 @@
     <Navbar />
     <v-container>
       <v-row no-gutters>
-        <DocentesTable :collection="Docentes" />
+        <DocentesTable :collection="docentes" />
       </v-row>
     </v-container>
   </div>
@@ -27,11 +27,11 @@ export default {
       Docentes,
     };
   },
-  // firestore: {
-  //   docentes: db
-  //     .collection("docentes")
-  //     .orderBy("name")
-  //     .limit(15),
-  // },
+  firestore: {
+    docentes: db
+      .collection("docentes")
+      .orderBy("name")
+      .limit(15),
+  },
 };
 </script>
