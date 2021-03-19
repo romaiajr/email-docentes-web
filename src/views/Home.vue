@@ -13,18 +13,15 @@
 import DocenteService from "../services/DocenteService";
 import DocentesTable from "../components/DocentesTable";
 import Navbar from "../components/Navbar";
-import Docentes from "../docentes.json";
 export default {
   name: "Home",
   components: {
     DocentesTable,
     Navbar,
-    Docentes,
   },
   data() {
     return {
       docentes: [],
-      Docentes,
     };
   },
   // watch: {
@@ -36,10 +33,10 @@ export default {
   methods: {
     getDocentes() {
       DocenteService.getDocentes().then((response) => {
-        console.log(response.data);
         this.docentes = response.data.sort((a, b) => {
           return a.name.localeCompare(b.name);
         });
+        localStorage.setItem("docentes", JSON.stringify(this.docentes));
       });
     },
 
@@ -58,6 +55,7 @@ export default {
     // },
   },
   mounted() {
+    this.docentes = JSON.parse(localStorage.getItem("docentes") || []);
     this.getDocentes();
     // sessionStorage.setItem("stored", JSON.stringify(this.docentes));
     // this.readTeachers();

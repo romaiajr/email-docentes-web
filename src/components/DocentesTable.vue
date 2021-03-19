@@ -43,13 +43,14 @@
           </v-data-table>
         </v-card>
       </v-col>
-      <v-col md="2" sm="12" no-gutters>
-        <b-button block size="sm" variant="danger"
-          >NÃO ACHEI O PROFESSOR</b-button
-        >
-        <b-button block size="sm" variant="warning" style="color: #fff"
-          >REPORTAR EMAIL ERRADO</b-button
-        >
+      <v-col md="2" sm="12" no-gutters align="center">
+        <button class="a-button">
+          <h6>NÃO ACHEI O PROFESSOR</h6>
+        </button>
+        <button class="b-button" style="margin-top: 8px !important">
+          <h6>REPORTAR EMAIL ERRADO</h6>
+        </button>
+
         <!-- <v-btn block color="error">
           NÃO ACHEI O PROFESSOR
         </v-btn>
@@ -83,6 +84,7 @@ export default {
           filterable: false,
         },
       ],
+      landHeaders: [{ text: "Nome", value: "name", sortable: false }],
       searchQuery: "",
       departmentQuery: "",
     };
@@ -122,5 +124,47 @@ export default {
 }
 #select-dep {
   margin-top: 18px !important;
+}
+
+.a-button,
+.b-button {
+  display: inline-block;
+  padding: 0.35em 1.2em;
+  /* width: 100%; */
+  /* margin: 0 0.3em 0.3em 0; */
+  border-radius: 0.12em;
+  box-sizing: border-box;
+  text-decoration: none;
+  font-weight: 600 !important;
+  color: #fff;
+  width: 100%;
+  text-align: center;
+  transition: all 0.2s;
+}
+.a-button {
+  background-color: var(--danger-color);
+  border: 0.1em solid var(--danger-color);
+}
+.b-button {
+  background-color: var(--warning-color);
+  border: 0.1em solid var(--warning-color);
+}
+.a-button h6,
+.b-button h6 {
+  margin: 0px !important;
+}
+
+.a-button:hover {
+  color: #ffffff;
+  background-color: var(--danger-dark-color);
+  border: 0.1em solid var(--danger-dark-color);
+  /* box-shadow: 0 15px 20px -10px var(--danger-color); */
+}
+
+.b-button:hover {
+  color: #ffffff;
+  background-color: var(--warning-dark-color);
+  border: 0.1em solid var(--warning-dark-color);
+  /* box-shadow: 0 15px 20px -10px var(--warning-color); */
 }
 </style>

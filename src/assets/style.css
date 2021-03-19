@@ -12,8 +12,11 @@
 
   --light-color: #fafafa;
 
-  --danger-color: #ef2222;
+  --danger-color: #f2135d;
+  --danger-dark-color: #e4004d;
   --success-color: #57d74c;
+  --warning-dark-color: #ff8200;
+  --warning-color: #ff9f39;
 
   font-family: "Open Sans", sans-serif;
   font-family: "Poppins", sans-serif;
