@@ -19,6 +19,11 @@ Vue.use(IconsPlugin);
 import { firestorePlugin } from "vuefire";
 Vue.use(firestorePlugin);
 
+//import adsense
+import Ads from "vue-google-adsense";
+Vue.use(require("vue-script2"));
+Vue.use(Ads.Adsense);
+
 new Vue({
   router,
   vuetify,
