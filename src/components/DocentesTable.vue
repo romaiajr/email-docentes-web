@@ -1,10 +1,23 @@
 <template>
   <v-container>
     <v-row id="teachers-table">
-      <v-col offset-md="2" md="8" sm="12">
+      <v-col md="2" sm="12">
+        <!-- <template>
+          <div class="ad-container">
+            <Adsense
+              data-ad-client="ca-pub-1234567891234567"
+              data-ad-slot="1234567890"
+              data-ad-format="auto"
+              :data-full-width-responsive="true"
+            >
+            </Adsense>
+          </div>
+        </template> -->
+      </v-col>
+      <v-col md="8" sm="12">
         <v-card>
           <v-card-title>
-            <h2>Docentes da UEFS</h2>
+            <h4>Docentes da UEFS</h4>
           </v-card-title>
           <v-card-subtitle>
             <v-spacer></v-spacer>
