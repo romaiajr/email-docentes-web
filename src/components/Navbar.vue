@@ -1,6 +1,9 @@
 <template>
-  <v-app-bar color="light-blue darken-4" dense dark>
-    <v-toolbar-title>Qual o email do professor?</v-toolbar-title>
+  <v-app-bar dark>
+    <img src="../assets/Logo2.svg" />
+    <v-toolbar-title style="margin-left: 12px !important"
+      ><h4>Email dos Docentes UEFS</h4></v-toolbar-title
+    >
     <v-spacer></v-spacer>
   </v-app-bar>
 </template>
@@ -34,3 +37,18 @@ export default {
   },
 };
 </script>
+<style scoped>
+img {
+  height: 50px !important;
+}
+.v-toolbar__content {
+  height: 75px !important;
+}
+.v-toolbar {
+  background: var(--primary-light-color) !important;
+}
+
+.v-toolbar h4 {
+  margin: 0px !important;
+}
+</style>

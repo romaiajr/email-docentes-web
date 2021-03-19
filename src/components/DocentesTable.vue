@@ -1,7 +1,12 @@
 <template>
   <v-container>
     <v-row id="teachers-table">
-      <v-col md="2" sm="12">
+      <v-col
+        cols="0"
+        md="0"
+        sm="12
+      "
+      >
         <!-- <template>
           <div class="ad-container">
             <Adsense
@@ -14,7 +19,7 @@
           </div>
         </template> -->
       </v-col>
-      <v-col md="8" sm="12">
+      <v-col offset-md="2" md="8" sm="12">
         <v-card>
           <v-card-title>
             <h4>Docentes da UEFS</h4>
@@ -45,6 +50,7 @@
             </v-row>
           </v-card-subtitle>
           <v-data-table
+            @click:row="handleClick"
             :loading="collection.length == 0 ? true : false"
             loading-text="Carregando... Por favor, aguarde"
             :headers="headers"
@@ -65,6 +71,17 @@
         </button>
       </v-col>
     </v-row>
+    <v-snackbar v-model="snackbar" timeout="5000" color="success">
+      <p>
+        {{ `Email copíado para a área de transferência` }}
+      </p>
+
+      <template v-slot:action="{ attrs }">
+        <v-btn color="white" text v-bind="attrs" @click="snackbar = false">
+          Fechar
+        </v-btn>
+      </template>
+    </v-snackbar>
   </v-container>
 </template>
 
@@ -89,6 +106,8 @@ export default {
       landHeaders: [{ text: "Nome", value: "name", sortable: false }],
       searchQuery: "",
       departmentQuery: null,
+      snackbar: false,
+      selectedRow: "",
     };
   },
   computed: {
@@ -113,8 +132,13 @@ export default {
       }
     },
   },
-  methods: {},
-  created() {},
+  methods: {
+    handleClick(value) {
+      navigator.clipboard.writeText(value.email);
+      this.snackbar = true;
+      this.selectedRow = value;
+    },
+  },
 };
 </script>
 <style scoped>
@@ -168,5 +192,13 @@ export default {
   background-color: var(--warning-dark-color);
   border: 0.1em solid var(--warning-dark-color);
   /* box-shadow: 0 15px 20px -10px var(--warning-color); */
+}
+
+.v-snack {
+  background-color: var(--sucess-color) !important;
+}
+
+.v-snack p {
+  margin: 0px !important;
 }
 </style>
