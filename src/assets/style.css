@@ -97,8 +97,8 @@ small {
   font-size: 12px;
   line-height: 150%;
 }
-/* @media screen and (max-width: 600px) {
-  body {
-    padding-top: 66px;
+@media screen and (max-width: 600px) {
+  h5 {
+    font-size: 22px;
   }
-} */
+}

@@ -71,9 +71,9 @@
         </button>
       </v-col>
     </v-row>
-    <v-snackbar v-model="snackbar" timeout="5000" color="success">
+    <v-snackbar v-model="snackbar" timeout="4000" color="success">
       <p>
-        {{ `Email copíado para a área de transferência` }}
+        {{ `${this.selectedRow.email} copiado!` }}
       </p>
 
       <template v-slot:action="{ attrs }">

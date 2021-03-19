@@ -2,7 +2,7 @@
   <v-app-bar dark>
     <img src="../assets/Logo2.svg" />
     <v-toolbar-title style="margin-left: 12px !important"
-      ><h4>Email dos Docentes UEFS</h4></v-toolbar-title
+      ><h5>Email dos Docentes UEFS</h5></v-toolbar-title
     >
     <v-spacer></v-spacer>
   </v-app-bar>
@@ -48,7 +48,7 @@ img {
   background: var(--primary-light-color) !important;
 }
 
-.v-toolbar h4 {
+.v-toolbar h5 {
   margin: 0px !important;
 }
 </style>
