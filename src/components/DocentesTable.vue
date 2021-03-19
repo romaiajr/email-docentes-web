@@ -50,17 +50,6 @@
         <button class="b-button" style="margin-top: 8px !important">
           <h6>REPORTAR EMAIL ERRADO</h6>
         </button>
-
-        <!-- <v-btn block color="error">
-          NÃO ACHEI O PROFESSOR
-        </v-btn>
-        <v-btn
-          block
-          color="warning"
-          style="margin-top: 8px; width=: 100% !important"
-        >
-          REPORTAR EMAIL ERRADO
-        </v-btn> -->
       </v-col>
     </v-row>
   </v-container>
@@ -86,7 +75,7 @@ export default {
       ],
       landHeaders: [{ text: "Nome", value: "name", sortable: false }],
       searchQuery: "",
-      departmentQuery: "",
+      departmentQuery: null,
     };
   },
   computed: {
@@ -100,7 +89,7 @@ export default {
       return departments.sort();
     },
     filteredList() {
-      if (this.departmentQuery != "") {
+      if (this.departmentQuery != null) {
         return this.collection.filter((item) => {
           return (
             item.department.toLowerCase() == this.departmentQuery.toLowerCase()

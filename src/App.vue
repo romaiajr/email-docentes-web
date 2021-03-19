@@ -5,4 +5,6 @@
     </v-main>
   </v-app>
 </template>
-<style src="./assets/style.css"></style>
+<style>
+@import "./assets/style.css";
+</style>
