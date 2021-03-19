@@ -63,10 +63,14 @@
         </v-card>
       </v-col>
       <v-col md="2" sm="12" no-gutters align="center">
-        <button class="a-button">
+        <button class="a-button" @click="notFound = true">
           <h6>NÃO ACHEI O PROFESSOR</h6>
         </button>
-        <button class="b-button" style="margin-top: 8px !important">
+        <button
+          class="b-button"
+          @click="wrongEmail = true"
+          style="margin-top: 8px !important"
+        >
           <h6>REPORTAR EMAIL ERRADO</h6>
         </button>
       </v-col>
@@ -75,17 +79,68 @@
       <p>
         {{ `${this.selectedRow.email} copiado!` }}
       </p>
-
       <template v-slot:action="{ attrs }">
         <v-btn color="white" text v-bind="attrs" @click="snackbar = false">
           Fechar
         </v-btn>
       </template>
     </v-snackbar>
+    <b-modal
+      id="wrong-email-modal"
+      title="Reportar Email Errado"
+      v-model="wrongEmail"
+      cancel-title="Cancelar"
+      ok-title="Confirmar"
+      ok-variant="success"
+      @ok="handleInsert(1)"
+      @cancel="cleanForm(1)"
+    >
+      <b-form>
+        <label>Nome do Professor</label>
+        <b-form-input
+          v-model="wrongEmailForm.name"
+          type="text"
+          required
+        ></b-form-input>
+        <label>Email Correto do Professor<small> (Opcional)</small></label>
+        <b-form-input
+          v-model="wrongEmailForm.email"
+          type="email"
+        ></b-form-input>
+        <b-form-text
+          >Se você tem o Email correto, por favor nos ajude ;)</b-form-text
+        >
+      </b-form>
+      <!-- </b-form-group> -->
+    </b-modal>
+    <b-modal
+      id="not-found-modal"
+      title="Professor Não Encontrado"
+      v-model="notFound"
+      cancel-title="Cancelar"
+      ok-title="Confirmar"
+      ok-variant="success"
+      @ok="handleInsert(2)"
+      @cancel="cleanForm(2)"
+    >
+      <b-form>
+        <label>Nome do Professor</label>
+        <b-form-input
+          v-model="notFoundForm.name"
+          type="text"
+          required
+        ></b-form-input>
+        <b-form-text
+          >Não se preocupe, vamos encontrar o email pra você ;)</b-form-text
+        >
+      </b-form>
+    </b-modal>
   </v-container>
 </template>
 
 <script>
+import WrongEmailService from "../services/WrongEmailService";
+import NotFoundService from "../services/NotFoundService";
 export default {
   name: "DocentesTable",
   props: {
@@ -107,7 +162,11 @@ export default {
       searchQuery: "",
       departmentQuery: null,
       snackbar: false,
+      wrongEmail: false,
+      notFound: false,
       selectedRow: "",
+      notFoundForm: { name: "" },
+      wrongEmailForm: { name: "", email: "" },
     };
   },
   computed: {
@@ -137,6 +196,28 @@ export default {
       navigator.clipboard.writeText(value.email);
       this.snackbar = true;
       this.selectedRow = value;
+    },
+    async handleInsert(type) {
+      try {
+        if (type == 1) {
+          await WrongEmailService.addWrongEmail(this.wrongEmailForm);
+          this.wrongEmailForm = {};
+          this.wrongEmail = false;
+        } else if (type == 2) {
+          await NotFoundService.addNotFound(this.notFoundForm);
+          this.notFoundForm = {};
+          this.notFound = false;
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    },
+    cleanForm(type) {
+      if (type == 1) {
+        (this.wrongEmailForm = {}), (this.wrongEmail = false);
+      } else if (type == 2) {
+        (this.notFoundForm = {}), (this.notFound = false);
+      }
     },
   },
 };
