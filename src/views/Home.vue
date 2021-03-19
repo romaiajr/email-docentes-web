@@ -36,7 +36,7 @@ export default {
         this.docentes = response.data.sort((a, b) => {
           return a.name.localeCompare(b.name);
         });
-        localStorage.setItem("docentes", JSON.stringify(this.docentes));
+        sessionStorage.setItem("docentes", JSON.stringify(this.docentes));
       });
     },
 
@@ -55,7 +55,7 @@ export default {
     // },
   },
   mounted() {
-    this.docentes = JSON.parse(localStorage.getItem("docentes") || []);
+    this.docentes = JSON.parse(sessionStorage.getItem("docentes")) || [];
     this.getDocentes();
     // sessionStorage.setItem("stored", JSON.stringify(this.docentes));
     // this.readTeachers();
