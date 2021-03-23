@@ -2,7 +2,7 @@
   <v-app-bar dark>
     <img src="../assets/Logo2.svg" />
     <v-toolbar-title style="margin-left: 12px !important"
-      ><h5>Email dos Docentes UEFS</h5></v-toolbar-title
+      ><h5>Meu Docente Favorito</h5></v-toolbar-title
     >
     <v-spacer></v-spacer>
   </v-app-bar>
