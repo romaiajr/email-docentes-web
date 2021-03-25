@@ -15,15 +15,6 @@ Vue.use(BootstrapVue);
 // Optionally install the BootstrapVue icon components plugin
 Vue.use(IconsPlugin);
 
-// Import Firebase and Dependencies to use vue + firebase
-import { firestorePlugin } from "vuefire";
-Vue.use(firestorePlugin);
-
-//import adsense
-import Ads from "vue-google-adsense";
-Vue.use(require("vue-script2"));
-Vue.use(Ads.Adsense);
-
 new Vue({
   router,
   vuetify,
