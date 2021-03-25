@@ -4,6 +4,7 @@
     <v-row no-gutters>
       <DocentesTable :collection="docentes" />
     </v-row>
+    <Footer />
   </div>
 </template>
 
@@ -13,11 +14,13 @@
 import DocenteService from "../services/DocenteService";
 import DocentesTable from "../components/DocentesTable";
 import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
 export default {
   name: "Home",
   components: {
     DocentesTable,
     Navbar,
+    Footer,
   },
   data() {
     return {

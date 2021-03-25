@@ -55,7 +55,7 @@
             loading-text="Carregando... Por favor, aguarde"
             :headers="headers"
             :items="filteredList"
-            :items-per-page="15"
+            :items-per-page="10"
             class="elevation-1 row-pointer"
           >
           </v-data-table>
@@ -244,6 +244,10 @@ export default {
 };
 </script>
 <style scoped>
+#teachers-table {
+  margin-bottom: 80px;
+}
+
 .row {
   background: #fff !important;
 }
@@ -302,5 +306,15 @@ export default {
 
 .v-snack p {
   margin: 0px !important;
+}
+
+@media screen and (max-width: 760px) {
+  .b-button {
+    margin-bottom: 8px;
+  }
+
+  .v-card__subtitle {
+    padding-bottom: 0px !important;
+  }
 }
 </style>
