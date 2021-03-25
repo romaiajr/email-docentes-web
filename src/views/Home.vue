@@ -24,41 +24,19 @@ export default {
       docentes: [],
     };
   },
-  // watch: {
-  //   docentes: function() {
-  //     console.log("entrou");
-  //     sessionStorage.setItem("stored", JSON.stringify(this.docentes));
-  //   },
-  // },
   methods: {
     getDocentes() {
       DocenteService.getDocentes().then((response) => {
         this.docentes = response.data.sort((a, b) => {
           return a.name.localeCompare(b.name);
         });
-        // sessionStorage.setItem("docentes", JSON.stringify(this.docentes));
+        localStorage.setItem("docentes", JSON.stringify(this.docentes));
       });
     },
-
-    // readTeachers() {
-    //   var list = JSON.parse(sessionStorage.getItem("stored" || []));
-    //   db.collection("docentes").onSnapshot((snapshot) => {
-    //     let changes = snapshot.docChanges();
-    //     changes.forEach((change) => {
-    //       console.log(change.type);
-    //       if (change.type == "added") {
-    //         list.push(change.doc.data());
-    //       }
-    //     });
-    //   });
-    //   this.docentes = list || [];
-    // },
   },
   mounted() {
-    // this.docentes = JSON.parse(sessionStorage.getItem("docentes")) || [];
+    this.docentes = JSON.parse(localStorage.getItem("docentes")) || [];
     this.getDocentes();
-    // sessionStorage.setItem("stored", JSON.stringify(this.docentes));
-    // this.readTeachers();
   },
 };
 </script>
