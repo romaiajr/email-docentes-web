@@ -57,7 +57,6 @@
             :items="filteredList"
             :items-per-page="15"
             class="elevation-1 row-pointer"
-            :search="searchQuery"
           >
           </v-data-table>
         </v-card>
@@ -180,14 +179,28 @@ export default {
       return departments.sort();
     },
     filteredList() {
+      let search = this.removeSpecial(this.searchQuery.toLowerCase().trim());
       if (this.departmentQuery != null) {
         return this.collection.filter((item) => {
-          return (
-            item.department.toLowerCase() == this.departmentQuery.toLowerCase()
-          );
+          if (search != null || search != "") {
+            return (
+              this.removeSpecial(item.name.toLowerCase()).includes(search) &&
+              item.department.toLowerCase() ==
+                this.departmentQuery.toLowerCase()
+            );
+          } else {
+            return (
+              item.department.toLowerCase() ==
+              this.departmentQuery.toLowerCase()
+            );
+          }
         });
       } else {
-        return this.collection;
+        if (search != null || search != "") {
+          return this.collection.filter((item) => {
+            return this.removeSpecial(item.name.toLowerCase()).includes(search);
+          });
+        } else return this.collection;
       }
     },
   },
@@ -218,6 +231,14 @@ export default {
       } else if (type == 2) {
         (this.notFoundForm = {}), (this.notFound = false);
       }
+    },
+    removeSpecial(texto) {
+      texto = texto.replace(/[ÀÁÂÃÄÅ]/, "A");
+      texto = texto.replace(/[àáâãäå]/, "a");
+      texto = texto.replace(/[ÈÉÊË]/, "E");
+      texto = texto.replace(/[Ç]/, "C");
+      texto = texto.replace(/[ç]/, "c");
+      return texto;
     },
   },
 };
